@@ -24,7 +24,9 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.blue,
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/menu');
+              },
               icon: Icon(
                 Icons.food_bank_outlined,
                 size: 35,
