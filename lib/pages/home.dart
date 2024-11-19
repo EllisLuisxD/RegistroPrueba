@@ -11,6 +11,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<User> usuarios = [];
 
+  int initialIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,12 +84,36 @@ class _HomeState extends State<Home> {
                 );
               },
             )),
-      bottomNavigationBar: NavigationBar(destinations: [
-        NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-        NavigationDestination(icon: Icon(Icons.message), label: 'Chat'),
-        NavigationDestination(icon: Icon(Icons.favorite), label: 'Favorites'),
-        NavigationDestination(icon: Icon(Icons.person), label: 'Profile')
-      ]),
+      bottomNavigationBar: NavigationBarTheme(
+        data: NavigationBarThemeData(
+            backgroundColor: Colors.black,
+            indicatorColor: Colors.grey,
+            labelTextStyle: WidgetStatePropertyAll(
+                TextStyle(fontSize: 12, color: Colors.white)),
+            iconTheme: WidgetStateProperty.resolveWith(
+              (states) {
+                if (states.contains(WidgetState.selected)) {
+                  return IconThemeData(color: Colors.black);
+                } else {
+                  return IconThemeData(color: Colors.white);
+                }
+              },
+            )),
+        child: NavigationBar(
+            selectedIndex: initialIndex,
+            onDestinationSelected: (value) {
+              setState(() {
+                initialIndex = value;
+              });
+            },
+            destinations: [
+              NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+              NavigationDestination(icon: Icon(Icons.message), label: 'Chat'),
+              NavigationDestination(
+                  icon: Icon(Icons.favorite), label: 'Favorites'),
+              NavigationDestination(icon: Icon(Icons.person), label: 'Profile')
+            ]),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           dynamic nuevoUsuario =
