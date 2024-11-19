@@ -82,6 +82,12 @@ class _HomeState extends State<Home> {
                 );
               },
             )),
+      bottomNavigationBar: NavigationBar(destinations: [
+        NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+        NavigationDestination(icon: Icon(Icons.message), label: 'Chat'),
+        NavigationDestination(icon: Icon(Icons.favorite), label: 'Favorites'),
+        NavigationDestination(icon: Icon(Icons.person), label: 'Profile')
+      ]),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           dynamic nuevoUsuario =
