@@ -22,6 +22,14 @@ class _HomeState extends State<Home> {
         foregroundColor: Colors.white,
         titleTextStyle: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         backgroundColor: Colors.blue,
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.food_bank_outlined,
+                size: 35,
+              ))
+        ],
       ),
       body: usuarios.isEmpty
           ? Center(
